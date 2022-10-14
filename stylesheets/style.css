@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200;300;400;600&display=swap');
+
+:root {
+  --clr-neutral-dark: hsl(229, 21%, 15%);
+  --clr-neutral: hsl(0, 0%, 100%);
+  --clr-accent: hsl(72, 62%, 63%);
+  --clr-accent-2: hsl(357, 81%, 69%);
+  --clr-accent-3: hsl(256, 54%, 72%);
+  --clr-subtle: hsl(221, 100%, 75%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  background: var(--clr-neutral-dark);
+  color: var(--clr-neutral);
+  font-family: 'IBM Plex Mono', monospace, sans-serif;
+  text-align: center;
+}
+
+.flow > * + * {
+  margin-top: 3em;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 2rem;
+  max-width: 75ch;
+}
+
+.subtitle {
+  color: var(--clr-subtle);
+}
+
+h2 {
+  color: var(--clr-accent-3);
+}
+
+cite,
+em {
+  color: var(--clr-accent-2);
+}
+
+strong {
+  color: var(--clr-accent);
+}
