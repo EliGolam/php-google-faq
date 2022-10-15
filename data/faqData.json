@@ -54,8 +54,17 @@
             "tag": "ol",
             "listItems": [
               {
-                "tag": "li",
-                "text": "List Item: 1"
+                "tag": "ul",
+                "listItems": [
+                  {
+                    "tag": "li",
+                    "text": "Nested List Item: 1"
+                  },
+                  {
+                    "tag": "li",
+                    "text": "Nested List Item: 2"
+                  }
+                ]
               },
               {
                 "tag": "li",

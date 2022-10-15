@@ -32,13 +32,15 @@
   function createDOMParagraph (&$paragraphs) {
     foreach($paragraphs as $paragraph) {
       $tag = $paragraph["tag"];
-      $openingTag = '<' . $tag . '>';
-      $closingTag = '</' . $tag . '>';
-
+      
       if($tag === 'p' || $tag === 'li') {
+        $openingTag = '<' . $tag . '>';
+        $closingTag = '</' . $tag . '>';
+      
         $text = $paragraph["text"];
         echo $openingTag . $text . $closingTag; 
       }
+      
       else if ($tag === 'ol' || $tag === 'ul') {
         createDOMList($paragraph);
       }
