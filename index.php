@@ -4,11 +4,60 @@
   /* Parsing Json Files  */
 
   $jsonRawData = file_get_contents("data/faqData.json");
-  $jsonData = json_decode($jsonRawData, true); // True to indicate associative arrays
+  $faqData = json_decode($jsonRawData, true); // True to indicate associative arrays
 
-  // var_dump($jsonData);
+  // var_dump($faqData);
 
-  
+  function createDOMSection (&$contentArray, $container) {
+    foreach($contentArray as $heading => $content) {
+      echo '<'. $container . '>';
+
+      $tag = $content["tag"];
+      $openingTag = '<' . $tag . '>';
+      $closingTag = '</' . $tag . '>';
+
+      // Create Heading
+      echo $openingTag . $heading . $closingTag;
+
+      createDOMParagraph($content["paragraphs"]);
+
+      if($content["hasSubheading"]) {
+        createDOMSection($content["subheadings"], 'article');
+      }
+
+      echo '</'. $container . '>';
+    }
+  }
+
+  function createDOMParagraph (&$paragraphs) {
+    foreach($paragraphs as $paragraph) {
+      $tag = $paragraph["tag"];
+      $openingTag = '<' . $tag . '>';
+      $closingTag = '</' . $tag . '>';
+
+      if($tag === 'p' || $tag === 'li') {
+        $text = $paragraph["text"];
+        echo $openingTag . $text . $closingTag; 
+      }
+      else if ($tag === 'ol' || $tag === 'ul') {
+        createDOMList($paragraph);
+      }
+    }
+  }
+
+  function createDOMList (&$list) {
+    $tag = $list["tag"];
+    $openingTag = '<' . $tag . '>';
+    $closingTag = '</' . $tag . '>';
+
+    echo $openingTag;
+
+    createDOMParagraph ($list["listItems"]);
+
+    echo $closingTag;
+  }
+
+
 ?><!DOCTYPE html>
 <html lang="en">
 <!-- METADATA -->
@@ -64,7 +113,9 @@
   </header>
 
   <main>
-    <h2>Emulate Google's FAQ page using PHP</h2>
+    <h2>PHP Page with paragraphs created with Scalable JSON file</h2>
+
+    <?php createDOMSection($faqData, 'section'); ?>
 
   </main>
 </body>
