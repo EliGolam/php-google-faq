@@ -1,8 +1,19 @@
-<!DOCTYPE html>
+<?php
+
+  /* Emulate Google FAQ page through PHP*/
+  /* Parsing Json Files  */
+
+  $jsonRawData = file_get_contents("data/faqData.json");
+  $jsonData = json_decode($jsonRawData, true); // True to indicate associative arrays
+
+  // var_dump($jsonData);
+
+  
+?><!DOCTYPE html>
 <html lang="en">
 <!-- METADATA -->
 <head>
-    <title>API Practice</title>
+    <title>PHP Practice</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <meta charset="UTF-8">
@@ -47,31 +58,14 @@
 
 <!-- BODY -->
 <body>
-    <header class="container">
-        <h1 class="title">API Practice</h1>
-        <p class="subtitle">Playground</p>
-    </header>
+  <header class="container">
+    <h1 class="title">PHP Practice | Google FAQ mockup</h1>
+    <p class="subtitle">by Elias Mahfuzul</p>
+  </header>
 
-    <div id="app" class="container exercises">
-        <div class="results-container row">
-            <p
-                v-show="loading"
-                class="text-center"
-            >Loading...</p>
-            
-            <p 
-                v-show="!loading"
-                v-for="email in emails"
-                class="result col-12"
-            >
-                {{ email }}
-            </p>
-        </div>
-        
-    </div>
-    
-    <div id="live-coding" class="container exercises">
-        <p class="result"></p>
-    </div>
+  <main>
+    <h2>Emulate Google's FAQ page using PHP</h2>
+
+  </main>
 </body>
 </html>

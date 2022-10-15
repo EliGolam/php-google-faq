@@ -1,0 +1,43 @@
+{
+  "Sample Title 1": {
+    "hasSubheading": true,
+    "paragraphs": [
+      "Paragraph1", "Paragraph2", "Paragraph3"
+    ],
+    "subheadings": {
+
+      "Subheading Title 1": {
+        "paragraphs": [
+          "Sub Paragraph1", "Sub Paragraph2"
+        ]
+      },
+      
+      "Subheading Title 2": {
+        "paragraphs": [
+          "Sub Paragraph3", "Sub Paragraph4"
+        ]
+      }
+    }
+  },
+
+  "Sample Title 2": {
+    "hasSubheading": false,
+    "paragraphs": [
+      "Paragraph1", "Paragraph2", "Paragraph3", "Paragraph4"
+    ]
+  },
+  
+  "Sample Title 3": {
+    "hasSubheading": true,
+    "paragraphs": [
+      "Paragraph1"
+    ],
+    "subheadings": {
+      "Subheading Title 1": {
+        "paragraphs": [
+          "Sub Paragraph1", "Sub Paragraph2"
+        ]
+      }
+    }
+  }
+}
