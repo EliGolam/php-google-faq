@@ -3,8 +3,11 @@
   /* Emulate Google FAQ page through PHP*/
   /* Parsing Json Files  */
 
-  $jsonRawData = file_get_contents("data/faqDataTest.json");
+  $jsonRawData = file_get_contents("data/faqData.json");
   $faqData = json_decode($jsonRawData, true); // True to indicate associative arrays
+
+  $jsonRawData = file_get_contents("data/pages.json");
+  $pagesData = json_decode($jsonRawData, true);
 
   // var_dump($faqData);
 
@@ -59,12 +62,44 @@
     echo $closingTag;
   }
 
+  function createNavLinks (&$links) {
+    $openingListTag = '<ul>';
+    $closingListTag = '</ul>';
+
+    echo $openingListTag;
+
+    foreach($links as $link) {
+      createLink($link);
+    }
+
+    echo $closingListTag;
+  }
+
+  function createLink (&$link) {
+    /* FORMAT: <li><a href="#" target="_blank">Name</a></li> */
+
+    $openingTag = '<li>';
+    $closingTag = '</li>';
+
+    $target = 'target="_self"';
+
+    if ($link["isActive"]) {
+      $class = 'class="nav-item active"';
+    }
+    else {
+      $class = 'class="nav-item"';
+    }
+
+    echo $openingTag;
+    echo '<a ' . $class . ' href="' . $link["link"] . '" ' . $target . '>' . $link["name"] . '</a>';
+    echo $closingTag;
+  }
 
 ?><!DOCTYPE html>
 <html lang="en">
 <!-- METADATA -->
 <head>
-    <title>PHP Practice</title>
+    <title>PHP Practice | Policies MockUP</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <meta charset="UTF-8">
@@ -110,19 +145,22 @@
 <!-- BODY -->
 <body>
   <header class="container">
-    <h1 class="title">PHP Practice</h1>
-    <p class="subtitle">by Elias Mahfuzul</p>
+    <h1 class="title">Google FAQ page mockup</h1>
+    <p class="subtitle">PHP Practice | by Elias Mahfuzul</p>
+    <p>This page's DOM is entirely generated using dynamic PHP functions fetching data from JSON files</p>
   </header>
 
   <main>
-    <h2><a href="policies.php" target="_blank">Google FAQ MOCKUP</a></h2>
+    <nav>
+      <div>
+        <!-- TO ADD: Google Logo -->
+        <h2>Privacy & Terms</h2>
+      </div>
 
-    <hr>
-
-    <h2>Sample PHP Page with text dynamically generated from JSON file</h2>
+      <?php createNavLinks($pagesData); ?>
+    </nav>
 
     <?php createDOMSection($faqData, 'section'); ?>
-
   </main>
 </body>
 </html>

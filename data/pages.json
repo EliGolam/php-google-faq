@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Overview",
+    "link": "#",
+    "isActive": false
+  },
+  {
+    "name": "Privacy Policy",
+    "link": "#",
+    "isActive": false
+  },
+  {
+    "name": "Terms of Service",
+    "link": "#",
+    "isActive": false
+  },
+  {
+    "name": "Technologies",
+    "link": "#",
+    "isActive": false
+  },
+  {
+    "name": "FAQ",
+    "link": "#",
+    "isActive": true
+  }
+]
